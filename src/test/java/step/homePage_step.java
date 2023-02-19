@@ -33,7 +33,8 @@ public class homePage_step extends PageObject {
     @Then("They want to select a centre")
     public void theyWantToSelectACentre() throws InterruptedException {
         homePage.clickBookNowButton();
-        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(1));
+//        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(1));
+//        Thread.sleep(3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(homePageLocator.btn_agree));
         homePage.chooseAgreeButton();
         homePage.chooseACentre();
