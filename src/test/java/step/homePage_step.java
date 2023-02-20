@@ -1,5 +1,6 @@
 package step;
 
+import elements.ElementBase;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import net.thucydides.core.pages.PageObject;
@@ -8,12 +9,13 @@ import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.homePage;
+import utils.Constants;
 
 import java.time.Duration;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
-public class homePage_step extends PageObject {
+public class homePage_step extends ElementBase {
 
     private final homePage homePage = new homePage();
     WebDriverWait wait=new WebDriverWait(getDriver(), Duration.ofSeconds(10));
@@ -26,17 +28,22 @@ public class homePage_step extends PageObject {
     }
     @Then("They should be able to see the homepage")
     public void theyShouldBeAbleToSeeTheHomepage(){
-        Assert.assertEquals("https://www.hollywoodbowl.co.uk/",homePage.getCurrentUrl());
+        Assert.assertEquals(Constants.URL,getCurrentUrl());
+        homePage.checkThatHomePageIsDisplayed();
+    }
+
+    @Then("They should be able to see the homepage 1")
+    public void theyShouldBeAbleToSeeTheHomepage1(){
+        Assert.assertEquals("Fail",getCurrentUrl());
         homePage.checkThatHomePageIsDisplayed();
     }
 
     @Then("They want to select a centre")
     public void theyWantToSelectACentre() throws InterruptedException {
-        homePage.clickBookNowButton();
 //        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(1));
 //        Thread.sleep(3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(homePageLocator.btn_agree));
         homePage.chooseAgreeButton();
+        homePage.clickBookNowButton();
         homePage.chooseACentre();
     }
 }

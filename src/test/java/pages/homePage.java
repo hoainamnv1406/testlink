@@ -1,15 +1,17 @@
 package pages;
 
+import elements.ElementBase;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import locators.homePage_locator;
 import org.openqa.selenium.By;
 
 @DefaultUrl("https://www.hollywoodbowl.co.uk/")
-public class homePage extends PageObject {
+public class homePage extends ElementBase {
 
     private final homePage_locator homePageLocator = new homePage_locator();
 
+    private final ElementBase elementBase = new ElementBase();
     public void openLoginPage(){
         open();
     }
@@ -19,25 +21,21 @@ public class homePage extends PageObject {
     }
 
     public void clickBookNowButton(){
-        getDriver().findElement(homePageLocator.btn_bookNow).click();
+        clickElement(homePageLocator.btn_bookNow);
     }
 
     public void checkThatHomePageIsDisplayed(){
-        boolean t = getDriver().findElement(homePageLocator.btn_centres).isDisplayed();
-        if (t == true) {
-            System.out.println("Element is displayed");
-        } else {
-            System.out.println("Element is not displayed");
-        }
+        checkElementIsDisplayed(homePageLocator.btn_centres);
     }
 
     public void chooseACentre(){
-        getDriver().findElement(homePageLocator.dropdown_selectCentre).click();
-        getDriver().findElement(homePageLocator.txt_Ashford).click();
+        clickElement(homePageLocator.dropdown_selectCentre);
+        clickElement(homePageLocator.txt_Ashford);
     }
 
     public void chooseAgreeButton(){
-        getDriver().findElement(homePageLocator.btn_agree).click();
+//        getDriver().findElement(homePageLocator.btn_agree).click();
+        clickElement(homePageLocator.btn_agree);
     }
 
 
