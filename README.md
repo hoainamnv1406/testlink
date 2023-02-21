@@ -100,4 +100,13 @@ prod {
 You use the `environment` system property to determine which environment to run against. For example to run the tests in the staging environment, you could run:
 ```json
 $ mvn clean verify -Denvironment=staging
+
+
+```
+
+### Report
+
+```java
+Report file location: target/site/serenity/index.html
+
 ```

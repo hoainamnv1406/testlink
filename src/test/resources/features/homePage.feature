@@ -3,7 +3,6 @@ Feature: Check home page functionality
   Background:
     Given Users want to open homepage
 
-
   @Test
   Scenario: Verify that user is able to navigate to the homepage
     When They should be able to see the homepage
