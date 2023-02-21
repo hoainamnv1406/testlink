@@ -6,7 +6,6 @@ import net.thucydides.core.pages.PageObject;
 import locators.homePage_locator;
 import org.openqa.selenium.By;
 
-@DefaultUrl("https://www.hollywoodbowl.co.uk/")
 public class homePage extends ElementBase {
 
     private final homePage_locator homePageLocator = new homePage_locator();
