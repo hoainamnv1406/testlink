@@ -22,7 +22,6 @@ public class homePage_step extends ElementBase {
     @Given("Users want to open homepage")
     public void usersWantToOpenHomepage() {
         homePage.openLoginPage();
-
     }
     @Then("They should be able to see the homepage")
     public void theyShouldBeAbleToSeeTheHomepage(){
