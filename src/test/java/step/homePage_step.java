@@ -45,5 +45,6 @@ public class homePage_step extends ElementBase {
     @Then("They want to select one centre")
     public void theyWantToSelectOneCentre() {
         homePage.chooseACentre();
+
     }
 }
