@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
@@ -44,14 +43,12 @@ public class JsonHelper {
 
     public static JsonObject getJsonObject(String jsonPath) {
         try {
-            LogHelper.debug("JsonHelper: getJsonObject");
             JsonObject obj;
             Gson gson = new Gson();
             JsonReader reader = getJsonReader(jsonPath);
             obj = gson.fromJson(reader, JsonObject.class);
             return obj;
         } catch (Exception e) {
-            LogHelper.error(e.getMessage());
             throw e;
         }
     }

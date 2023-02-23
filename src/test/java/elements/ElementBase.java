@@ -2,7 +2,6 @@ package elements;
 
 import helpers.LogHelper;
 import net.thucydides.core.pages.PageObject;
-import org.apache.log4j.BasicConfigurator;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,7 +13,6 @@ import utils.Constants;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ElementBase extends PageObject {
 
@@ -79,11 +77,11 @@ public class ElementBase extends PageObject {
 
     protected void waitForElementVisibility(By by, Duration duration) {
         try {
-            LogHelper.info(String.format("Wait for visibility of %s", by.toString()));
+//            LogHelper.info(String.format("Wait for visibility of %s", by.toString()));
             WebDriverWait wait = new WebDriverWait(getDriver(), duration);
             wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception e) {
-            LogHelper.error(String.format("waitForElementVisibility: Has error with control '%s': %s", by.toString(), e.getMessage().split("\n")[0]));
+//            LogHelper.error(String.format("waitForElementVisibility: Has error with control '%s': %s", by.toString(), e.getMessage().split("\n")[0]));
         }
     }
 

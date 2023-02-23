@@ -46,4 +46,9 @@ public class homePage_step extends ElementBase {
         homePage.clickBookNowButton();
         homePage.chooseACentre();
     }
+
+    @Then("They want to select a centree")
+    public void theyWantToSelectACentree() {
+        homePage.chooseACentre();
+    }
 }

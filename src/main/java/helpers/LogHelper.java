@@ -1,9 +1,10 @@
 package helpers;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LogHelper {
-    static Logger logger = Logger.getLogger(LogHelper.class);
+    private static Logger logger = LoggerFactory.getLogger(LogHelper.class);
 
     public static void info(String message) {
         logger.info(message);
@@ -17,11 +18,4 @@ public class LogHelper {
         logger.error(message);
     }
 
-    public static void fatal(String message) {
-        logger.fatal(message);
-    }
-
-    public static void debug(String message) {
-        logger.debug(message);
-    }
 }

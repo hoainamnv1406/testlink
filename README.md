@@ -66,13 +66,43 @@ The sample projects both use some Serenity features which make configuring the t
 The WebDriver configuration is managed entirely from this file, as illustrated below:
 ```java
 webdriver {
-    driver = chrome
-}
-headless.mode = true
+        driver = chrome
+        capabilities {
+//    browserName = "firefox"
+        acceptInsecureCerts = true
+        "goog:chromeOptions" {
+        args = ["test-type", "no-sandbox", "ignore-certificate-errors", "--window-size=1000,800",
+        "incognito", "disable-infobars", "disable-gpu", "disable-default-apps", "disable-popup-blocking"]
+        }
+        "moz:firefoxOptions" {
+        args = ["-headless"],
+        prefs {
+        "javascript.options.showInConsole": false
+        },
+        log {"level": "info"},
+        }
+        }
+        }
 
-chrome.switches="""--start-maximized;--test-type;--no-sandbox;--ignore-certificate-errors;
-                   --disable-popup-blocking;--disable-default-apps;--disable-extensions-file-access-check;
-                   --incognito;--disable-infobars,--disable-gpu"""
+        drivers {
+        windows {
+        webdriver.chrome.driver = src/test/resources/webdriver/windows/chromedriver.exe
+        webdriver.gecko.driver = src/test/resources/webdriver/windows/geckodriver.exe
+        }
+        mac {
+        webdriver.chrome.driver = src/test/resources/webdriver/mac/chromedriver
+        webdriver.gecko.driver = src/test/resources/webdriver/mac/geckodriver
+        }
+        linux {
+        webdriver.chrome.driver = src/test/resources/webdriver/linux/chromedriver
+        webdriver.gecko.driver = src/test/resources/webdriver/linux/geckodriver
+        }
+        }
+```
+
+```json
+$ mvn clean verify -Dwebdriver.driver=firefox
+
 
 ```
 
@@ -96,7 +126,11 @@ prod {
 }
 }
 ```
+```json
+$ mvn clean verify -Denvironment=staging
 
+
+```
 You use the `environment` system property to determine which environment to run against. For example to run the tests in the staging environment, you could run:
 ```json
 $ mvn clean verify -Denvironment=staging
