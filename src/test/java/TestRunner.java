@@ -9,4 +9,4 @@ import org.junit.runner.RunWith;
         tags = "",
         glue = {"step"}
 )
-public class CucumberTestSuite {}
+public class TestRunner {}
