@@ -18,13 +18,10 @@ import java.util.concurrent.TimeUnit;
 public class homePage_step extends ElementBase {
 
     private final homePage homePage = new homePage();
-    WebDriverWait wait=new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
-    homePage_locator homePageLocator;
     @Given("Users want to open homepage")
     public void usersWantToOpenHomepage() {
         homePage.openLoginPage();
-
     }
     @Then("They should be able to see the homepage")
     public void theyShouldBeAbleToSeeTheHomepage(){
@@ -39,16 +36,14 @@ public class homePage_step extends ElementBase {
     }
 
     @Then("They want to select a centre")
-    public void theyWantToSelectACentre() throws InterruptedException {
-//        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(1));
-//        Thread.sleep(3);
+    public void theyWantToSelectACentre(){
         homePage.chooseAgreeButton();
         homePage.clickBookNowButton();
         homePage.chooseACentre();
     }
 
-    @Then("They want to select a centree")
-    public void theyWantToSelectACentree() {
+    @Then("They want to select one centre")
+    public void theyWantToSelectOneCentre() {
         homePage.chooseACentre();
     }
 }

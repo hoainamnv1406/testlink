@@ -22,7 +22,7 @@ src
 Serenity 2.2.13 introduced integration with WebdriverManager to download webdriver binaries.
 
 ## Executing the tests
-To run the sample project, you can either just run the `CucumberTestSuite` test runner class, or run either `mvn verify` or `gradle test` from the command line.
+To run the sample project, you can either just run the `TestRunner` test runner class, or run either `mvn verify` or `gradle test` from the command line.
 
 By default, the tests will run using Chrome. You can run them in Firefox by overriding the `driver` system property, e.g.
 ```json
@@ -126,11 +126,7 @@ prod {
 }
 }
 ```
-```json
-$ mvn clean verify -Denvironment=staging
 
-
-```
 You use the `environment` system property to determine which environment to run against. For example to run the tests in the staging environment, you could run:
 ```json
 $ mvn clean verify -Denvironment=staging
@@ -144,3 +140,34 @@ $ mvn clean verify -Denvironment=staging
 Report file location: target/site/serenity/index.html
 
 ```
+
+### Execute with tags
+#### Example #1: Execute only @smoke scenario
+```json
+$ mvn clean verify -Dcucumber.filter.tags="@smoke"
+
+```
+It will execute only one scenario which is tagged with @smoke and ignore all other scenarios.
+
+#### Example #2: Skip or Ignore scenarios which are tagged with @manual
+```json
+$ mvn clean verify -Dcucumber.filter.tags="not @manual"
+
+```
+This will execute 3 scenarios out of 4, all 3, except the @manual one.
+
+#### Example #3: Ignore or Skip multiple tags
+```json
+$ mvn clean verify -Dcucumber.filter.tags="not @manual"
+
+```
+This will execute 2 test scenarios excluding @manual and @sanity. Can you try by yourself by replacing @sanity with @regression that how many scenarios executed?
+
+#### Example #4: Execute @regression tag ignoring @sanity
+
+```json
+$ mvn mvn verify -Dcucumber.filter.tags="@regression and not @sanity"
+
+```
+This will execute 2nd test scenario, 3rd scenario will be ignored, since it has @sanity tag. These are some example, in real world you might have to use different combination as well.
+
