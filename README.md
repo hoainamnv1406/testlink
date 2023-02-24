@@ -112,7 +112,7 @@ Serenity uses WebDriverManager to download the WebDriver binaries automatically 
 We can also configure environment-specific properties and options, so that the tests can be run in different environments. Here, we configure three environments, __dev__, _staging_ and _prod_, with different starting URLs for each:
 ```java
 environments {
-  default {
+default {
   webdriver.base.url = "https://www.hollywoodbowl.co.uk/"
 }
 dev {
