@@ -127,6 +127,9 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <excludes>
+                        <exclude>**/RunCucumberIT.java</exclude>
+                    </excludes>
                     <includes>
                         <include>**/*Test.java</include>
                         <include>**/Test*.java</include>
@@ -138,7 +141,8 @@
                     </systemPropertyVariables>
                     <parallel>classes</parallel>
                     <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <useUnlimitedThreads>false</useUnlimitedThreads>
+                    <threadCount>4</threadCount>
                 </configuration>
                 <executions>
                     <execution>
@@ -146,6 +150,10 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <parallel>methods</parallel>
+                            <threadCount>4</threadCount>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

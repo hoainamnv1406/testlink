@@ -3,17 +3,9 @@ package step;
 import elements.ElementBase;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import net.thucydides.core.pages.PageObject;
-import locators.homePage_locator;
 import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.homePage;
 import utils.Constants;
-
-import java.time.Duration;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 public class homePage_step extends ElementBase {
 
