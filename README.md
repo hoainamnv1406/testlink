@@ -166,7 +166,7 @@ This will execute 2 test scenarios excluding @manual and @sanity. Can you try by
 #### Example #4: Execute @regression tag ignoring @sanity
 
 ```json
-$ mvn mvn verify -Dcucumber.filter.tags="@regression and not @sanity"
+$ mvn verify -Dcucumber.filter.tags="@regression and not @sanity"
 
 ```
 This will execute 2nd test scenario, 3rd scenario will be ignored, since it has @sanity tag. These are some example, in real world you might have to use different combination as well.
