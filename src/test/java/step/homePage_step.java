@@ -3,6 +3,7 @@ package step;
 import elements.ElementBase;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.homePage;
 import utils.Constants;
@@ -15,28 +16,10 @@ public class homePage_step extends ElementBase {
     public void usersWantToOpenHomepage() {
         homePage.openLoginPage();
     }
-    @Then("They should be able to see the homepage")
-    public void theyShouldBeAbleToSeeTheHomepage(){
-        Assert.assertEquals(Constants.URL,getCurrentUrl());
-        homePage.checkThatHomePageIsDisplayed();
-    }
 
-    @Then("They should be able to see the homepage 1")
-    public void theyShouldBeAbleToSeeTheHomepage1(){
-        Assert.assertEquals("Fail",getCurrentUrl());
-        homePage.checkThatHomePageIsDisplayed();
-    }
-
-    @Then("They want to select a centre")
-    public void theyWantToSelectACentre(){
-        homePage.chooseAgreeButton();
-        homePage.clickBookNowButton();
-        homePage.chooseACentre();
-    }
-
-    @Then("They want to select one centre")
-    public void theyWantToSelectOneCentre() {
-        homePage.chooseACentre();
-
+    @When("User login")
+    public void userLogin() throws InterruptedException {
+        homePage.userLogin();
+        Thread.sleep(10000);
     }
 }
